@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yanshu.reportdao.XiaomiMapper" >
+  
+      
+      
+      <!-- 获取贴片机信息 -->
+   <select id="getLineInfo" statementType="CALLABLE" parameterType="map" resultType="map">
+           {
+	          call  Xiaomi_smtline
+	          (
+	           #{line,mode=IN,jdbcType=VARCHAR,javaType=String},
+	           #{page,mode=IN,jdbcType=VARCHAR,javaType=String},
+	           #{rows,mode=IN,jdbcType=VARCHAR,javaType=String},
+	           #{count,mode=OUT,jdbcType=INTEGER,javaType=int}
+	          )
+          }
+   </select>
+   
+   
+        <!-- 获取贴片机信息 -->
+   <select id="getMachineinfo" statementType="CALLABLE" parameterType="map" resultType="map">
+           {
+	          call  Xiaomi_machine
+	          (
+	           #{line,mode=IN,jdbcType=VARCHAR,javaType=String},
+	           #{page,mode=IN,jdbcType=VARCHAR,javaType=String},
+	           #{rows,mode=IN,jdbcType=VARCHAR,javaType=String},
+	           #{count,mode=OUT,jdbcType=INTEGER,javaType=int}
+	          )
+          }
+   </select>
+   
+ 
+   
+</mapper>

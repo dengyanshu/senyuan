@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.senyuan.dao.MenuMapper" >
+  <resultMap id="MenuResultMap" type="com.senyuan.entity.Menu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="text" property="text" jdbcType="VARCHAR" />
+    <result column="parent_Id" property="parentId" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="icon_Cls" property="iconCls" jdbcType="VARCHAR" />
+    
+    <association property="attributes" resultMap="com.senyuan.dao.AttributesMapper.AttributesResultMap"></association>
+    <!--  
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="menu_Description" property="menuDescription" jdbcType="VARCHAR" />
+    -->
+  </resultMap>
+  
+  
+   <insert id="insert" parameterType="com.senyuan.entity.Menu" >
+      insert into menu (
+      text, 
+      url, 
+      parent_Id, 
+      menu_Description, 
+      state, 
+      icon_Cls)
+      values (
+      #{text,jdbcType=VARCHAR}, 
+      #{attributes.url,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=INTEGER},
+      #{attributes.menuDescription,jdbcType=VARCHAR}, 
+       "open", 
+      #{iconCls,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <select id="selectOne"  resultMap="MenuResultMap">
+       select  * from menu where parent_Id=-1
+  </select>
+  
+  
+  <select id="selectOneCommon"  resultMap="MenuResultMap" parameterType="int">
+       select  * from menu where id=#{id}
+  </select>
+  
+  
+    <select id="selectAllChildren"  resultMap="MenuResultMap" parameterType="int">
+       select  * from menu where parent_Id=#{id}
+   </select>
+   
+   <select id="selectNeedChildren" resultMap="MenuResultMap"  parameterType="map">
+         select  * from menu where parent_Id=#{pid} and  id in 
+         <foreach collection="menuids" open="(" close=")" separator="," item="menuid">
+             #{menuid}
+         </foreach>
+   </select>
+   
+   <delete id="delete" parameterType="com.senyuan.entity.Menu">
+     delete  from  menu where  id=#{id}
+   </delete>
+   
+   <update id="update" parameterType="com.senyuan.entity.Menu"  >
+        update  menu  
+         <set>
+            <if test="text!=null">
+                 text=#{text},
+            </if>
+              <if test="attributes.url!=null">
+                 url=#{attributes.url},
+            </if>
+             <if test="parentId!=null">
+                 parent_Id=#{parentId},
+            </if>
+             <if test="attributes.menuDescription!=null">
+                 menu_Description=#{attributes.menuDescription},
+            </if>
+            <if test="state!=null">
+                 state=#{state},
+            </if>
+            <if test="iconCls!=null">
+                 icon_Cls=#{iconCls},
+            </if>
+         </set>
+        where  id=#{id}
+   
+   </update>
+    
+    
+       <update id="updateStateToClosed" parameterType="int"  >
+        update  menu  
+         set  state='closed'
+        where  id=#{id}
+      </update>
+      
+       <update id="updateStateToOpen" parameterType="int"  >
+        update  menu  
+         set  state='open'
+        where  id=#{id}
+      </update>
+      
+      
+      
+    
+</mapper>

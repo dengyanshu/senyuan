@@ -1,0 +1,18 @@
+#main config 
+server:
+       port: 8888 
+       context-path: /
+spring:
+      datasource:
+                driverclass: com.microsoft.sqlserver.jdbc.SQLServerDriver
+                url:  jdbc:sqlserver://10.1.10.9:1433;DatabaseName=senyuan;characterEncoding=UTF-8
+                password: pass123!
+                username: sa
+
+
+logging:
+   level:
+     com.senyuan.dao : debug
+
+mybatis:
+        type-aliases-package: com.senyuan.entity

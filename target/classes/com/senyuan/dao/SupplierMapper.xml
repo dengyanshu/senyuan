@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.senyuan.dao.SupplierMapper" >
+  <resultMap id="SupplierResultMap" type="com.senyuan.entity.Supplier" >
+    <id column="sup_id" property="supId" jdbcType="INTEGER" />
+    <result column="sup_name" property="supName" jdbcType="VARCHAR" />
+    <result column="sup_linkman" property="supLinkman" jdbcType="VARCHAR" />
+    <result column="sup_phone" property="supPhone" jdbcType="VARCHAR" />
+    <result column="sup_address" property="supAddress" jdbcType="VARCHAR" />
+    <result column="sup_remark" property="supRemark" jdbcType="VARCHAR" />
+    <result column="sup_pay" property="supPay" jdbcType="DECIMAL" />
+    <result column="sup_type" property="supType" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <insert id="insert" parameterType="com.senyuan.entity.Supplier" >
+    insert into supplier (sup_id, sup_name, sup_linkman, 
+      sup_phone, sup_address, sup_remark, 
+      sup_pay, sup_type)
+    values (#{supId,jdbcType=INTEGER}, #{supName,jdbcType=VARCHAR}, #{supLinkman,jdbcType=VARCHAR}, 
+      #{supPhone,jdbcType=VARCHAR}, #{supAddress,jdbcType=VARCHAR}, #{supRemark,jdbcType=VARCHAR}, 
+      #{supPay,jdbcType=DECIMAL}, #{supType,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="selectPageCount" parameterType="Page" resultType="long">
+      select  count(1)  from  supplier
+  </select>
+  
+  
+    <select id="selectPage" parameterType="Page"  resultMap="SupplierResultMap">
+      select  *  from  supplier  limit  #{start},#{rows}
+   </select>
+  
+</mapper>

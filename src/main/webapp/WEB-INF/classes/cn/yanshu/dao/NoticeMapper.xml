@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yanshu.dao.NoticeMapper" >
+  <resultMap id="NoticeResultMap" type="cn.yanshu.entity.Notice" >
+    <id column="notice_Id" property="noticeId" jdbcType="INTEGER" />
+    <result column="notice_Title" property="noticeTitle" jdbcType="VARCHAR" />
+    <result column="notice_Content" property="noticeContent" jdbcType="VARCHAR" />
+    <result column="notice_Author" property="noticeAuthor" jdbcType="VARCHAR" />
+    <result column="create_Time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+   <insert id="insert" parameterType="cn.yanshu.entity.Notice" >
+    insert into notice ( notice_Title, notice_Content, 
+      notice_Author, create_Time)
+    values ( #{noticeTitle,jdbcType=VARCHAR}, #{noticeContent,jdbcType=VARCHAR}, 
+      #{noticeAuthor,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+   
+   <select id="selectOne" resultMap="NoticeResultMap" parameterType="Integer">
+     select  *  from  notice where notice_id=#{id}
+   </select>
+  
+  <select id="selectPageCount" parameterType="Page" resultType="long">
+      select  count(1) from notice  
+      <if test="keyWord!=null">
+          where notice_Title like #{keyWord.noticeTitle}
+      </if>
+  </select>
+  <select id="selectPage"  parameterType="Page"  resultMap="NoticeResultMap">
+       select notice_Title,notice_Id, 
+      notice_Author, create_Time from notice  
+       <if test="keyWord!=null">
+          where notice_Title like #{keyWord.noticeTitle}
+      </if>
+      limit #{start},#{rows}
+  </select>
+  
+    <delete id="deleteList"  >
+     delete  from  notice
+     where  notice_Id  in 
+     <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+     </foreach>
+  </delete>
+  
+</mapper>

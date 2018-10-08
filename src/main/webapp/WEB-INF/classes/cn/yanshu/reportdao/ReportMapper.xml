@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yanshu.reportdao.ReportMapper" >
+  
+  
+  <select id="smtline_getline" statementType="CALLABLE" resultType="map">
+       {
+           call  Productivity_SMT_Report_bak2
+           (
+           ''
+           )   
+       }
+  </select>
+     <!--  <select id="get1" resultType="map" parameterType="map" statementType="CALLABLE" >
+	   {
+	        #{res,mode=OUT,jdbcType=INTEGER}=call  Txn_testMO(
+	                                            '',
+	                                            #{msg,mode=OUT,jdbcType=VARCHAR,javaType=String},
+	                                           '',
+	                                           #{lotsn,mode=IN,jdbcType=VARCHAR,javaType=String}
+	                                           )
+ 
+	   }
+	
+	</select> -->
+  
+  
+       <select id="smtline_mo" statementType="CALLABLE" resultType="map" parameterType="map">
+       {
+	    #{res,mode=OUT,jdbcType=INTEGER,javaType=int}=call MainBoard_SMT_WorkcenterToDay_bak2(
+	      '',
+	       '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	     '',
+	      '',
+	    '',
+	      #{moname,mode=IN,jdbcType=VARCHAR,javaType=String},
+	      #{workcenterid,mode=IN,jdbcType=VARCHAR,javaType=String}
+	      ) 
+	   }
+  </select>
+  
+  
+  <select id="smtline_mz" parameterType="map" resultType="map">
+      {
+	    call smt_board_new(
+	      #{moname,mode=IN,jdbcType=VARCHAR,javaType=String},
+	      #{workcenterid,mode=IN,jdbcType=VARCHAR,javaType=String}
+	     ) 
+	  }
+  </select>
+  
+  <select id="zbsite_getworkcenter" parameterType="string" resultType="map" statementType="CALLABLE">
+      {
+          call  threeFloor_4d
+          (
+          #{site,,mode=IN,jdbcType=VARCHAR,javaType=String}
+          )
+      }
+  
+  </select>
+  
+  <select id="zbsite_getresult" parameterType="map"  resultType="map" statementType="CALLABLE">
+     {
+        call DIP_Board_Monitor_New
+        (
+         #{site,,mode=IN,jdbcType=VARCHAR,javaType=String},    
+         #{workcenter,mode=IN,jdbcType=VARCHAR,javaType=String},    
+         #{adate,mode=IN,jdbcType=VARCHAR,javaType=String},    
+         #{bdate,mode=IN,jdbcType=VARCHAR,javaType=String},    
+         #{banci,mode=IN,jdbcType=VARCHAR,javaType=String}   
+        )
+     }
+  
+  </select>
+   <select id="smtopc_example" parameterType="map"  statementType="CALLABLE">
+     {
+        #{res,mode=OUT,jdbcType=INTEGER}= call Txn_smtopc_example_4d
+        (
+           '',
+	        #{msg,mode=OUT,jdbcType=VARCHAR,javaType=String},
+	        
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      '',
+	      
+	    
+	      #{moid,mode=IN,jdbcType=VARCHAR,javaType=String},
+	      #{moname,mode=IN,jdbcType=VARCHAR,javaType=String} ,
+	      #{lotsn,mode=IN,jdbcType=VARCHAR,javaType=String} 
+        )
+     }
+  
+  </select>
+</mapper>

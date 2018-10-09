@@ -5,3 +5,17 @@ service iptables start
 vim etc/sysconfig/iptables
 iptables -l
 reboot
+
+
+-----------------docker  常用指令----------------
+docker build -t  images:1.0.1 .
+
+docker run -d --name gisjava -v/opt/market/configs/gisjava/ :/configs/ -p 8003:8003 gisjava:1.0.1
+
+
+dockerfile:
+from 10.5.50.132:10000/java
+workdir /GneecCommonGisJa/
+copy GneecCommonGisJa.jar  /GneecCommonGisJa/GneecCommonGisJa.jar
+cmd ["java" "-Xmx1g","-Djava.security.egd=file:/dev/./jread'on","-jar","GneecCommonGisJa.jar",
+"--spring.config.location=file:/configs/application.yml"]

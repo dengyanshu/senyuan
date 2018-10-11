@@ -37,6 +37,11 @@ user["git_user_email"] = "344630476@qq.com"
 
 修改配置
 docker exec -it gitlab vi /etc/gitlab/gitlab.rb
+--------------------------------------------------------------
+docker 用户 无法克隆 无法push   提示权限  （git.bash 必须以管理员的身份运行）
+用一条指令 重置下
+git config --system --unset credential.helper
+
 
 
 

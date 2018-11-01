@@ -1,0 +1,23 @@
+﻿
+    1、loginForm 登陆成功 loginForm.Visiable=false;MainForm mainForm=new 
+    MainForm();mainForm.Show();
+
+     mainForm的关闭事件中 调用Application.Exit();
+
+    2、c#的垃圾回收机制问题
+
+     c#的窗体很多需要单例 单例不能使用懒汉式写法 因为c#的垃圾回收机制 当窗体关闭的时候 该窗体不是null
+
+     而是dispose状态 造成获取到先前未等于null但状态是dispose的窗体对象
+
+     private SerialPortForm sp;
+
+ public static SerialPortForm getInstance(){
+
+     if(sp==null||sp.IsDispose())
+
+     sp=new SerialPortForm();
+
+     return sp;
+
+ }

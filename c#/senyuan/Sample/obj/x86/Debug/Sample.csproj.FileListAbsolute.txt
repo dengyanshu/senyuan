@@ -1,0 +1,16 @@
+D:\vs_ws\senyuan\Sample\bin\Debug\Sample.exe.config
+D:\vs_ws\senyuan\Sample\bin\Debug\Sample.exe
+D:\vs_ws\senyuan\Sample\bin\Debug\Sample.pdb
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\Sample.csproj.GenerateResource.Cache
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\Sample.exe
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\Sample.pdb
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\mes.Form1.resources
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\mes.FormA.resources
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\mes.FormB.resources
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\mes.form_input_pwd.resources
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\mes.Login.resources
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\mes.Properties.Resources.resources
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\mes.SerialPortForm.resources
+D:\vs_ws\senyuan\Sample\bin\Debug\Interop.LabelManager2.dll
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\Interop.LabelManager2.dll
+D:\vs_ws\senyuan\Sample\obj\x86\Debug\Sample.csproj.ResolveComReference.cache

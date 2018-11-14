@@ -20,7 +20,7 @@ copy GneecCommonGisJa.jar  /GneecCommonGisJa/GneecCommonGisJa.jar
 cmd ["java" "-Xmx1g","-Djava.security.egd=file:/dev/./jread'on","-jar","GneecCommonGisJa.jar",
 "--spring.config.location=file:/configs/application.yml"]
 
-
+------------------------------------------------------------------------------------------------------------------------
 
 
 docker gitlab 邮箱配置：
@@ -43,6 +43,19 @@ docker 用户 无法克隆 无法push   提示权限  （git.bash 必须以管�
 git config --system --unset credential.helper
 
 
+-----------------------------------------------------------
+git branch -a  查看所有
+git fetch  重新获取 （当远程分支不全的时候）
 
+git branch -d dengdeng 删除本地分支
+
+
+
+
+
+解决gitignore 不起作用
+git rm -r --cached .  
+git add .
+git commit -m "update gitignore"
 
 

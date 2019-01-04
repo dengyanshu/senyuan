@@ -1,0 +1,5 @@
+获取同一班组下的所有工序用逗号隔开
+SELECT   we_classname,
+ (SELECT  workflowName+','  FROM  #t WHERE we_classname=A.we_classname ORDER BY orderby FOR XML PATH('')) AS workflows
+  FROM  #t A 
+  GROUP BY   we_classname

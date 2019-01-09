@@ -49,7 +49,10 @@ git fetch  重新获取 （当远程分支不全的时候）
 
 git branch -d dengdeng 删除本地分支
 
-
+1、git  checkout -b  chouchou 新建本地分支（会从当前分支创建 比如git clone dev 分支到本地 会以本地dev 创建 本地 chouchou）
+2、修改完后git  push -u origin chouchou 提交到自己的分支
+3、请求合并到dev
+4、每天从git pull origin dev  拉取代码到本地  如果有冲突 本地解决
 
 
 

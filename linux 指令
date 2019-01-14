@@ -55,7 +55,12 @@ git branch -d dengdeng 删除本地分支
 4、每天从git pull origin dev  拉取代码到本地  如果有冲突 本地解决
 
 
-
+git 忽略文件清单
+/target/
+/.classpath
+/.settings/
+/.gitignore
+/.project
 解决gitignore 不起作用
 git rm -r --cached .  
 git add .

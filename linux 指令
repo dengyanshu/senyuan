@@ -65,6 +65,16 @@ git 忽略文件清单
 git rm -r --cached .  
 git add .
 git commit -m "update gitignore"
+
+git  本地提交后 拉取git pull origin dev 提示reject non-fast-faward 
+1、重置提交 git  reset head^
+2、git stash 
+3、git pull origin dev:dengdeng
+4、git  stash  pop
+5、 git commit
+6、git push origin dengdeng
+7、 请求合并
+
 ---------------------------------------------------------------------------------------maven 跳过测试---------------
 clean package DskipTests
 

@@ -1,0 +1,21 @@
+1、服务器安装oracle  sid 与 service_name 不一致
+2、本地plsql developer64 位连接远程oracle服务器：
+   plsql developer１２安装 激活好 
+   
+   需要oracle 官方下载一个64位 oracle instance client１１  在根目录下新建目录 NETWORK\ADMIN\tnsnames.ora
+   APPORCL =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 10.1.10.9)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = orcl.senyuan.com)
+    )
+  )
+
+   在plsql  developer tools选项中　配置以上D:\instantclient_11_2
+   
+   配置环境变量：
+   NLS_LANG＝SIMPLIFIED CHINESE_CHINA.ZHS16GBK
+   TNS_ADMIN＝D:\instantclient_11_2\NETWORK\ADMIN
+   path中添加D:\instantclient_11_2

@@ -8,6 +8,9 @@ reboot
 
 
 -----------------docker  常用指令----------------
+docker ps -a
+
+
 docker build -t  images:1.0.1 .
 
 docker run -d --name gisjava -v/opt/market/configs/gisjava/ :/configs/ -p 8003:8003 gisjava:1.0.1

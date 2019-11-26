@@ -1,6 +1,10 @@
-yum list installed ----------列出yum  安装清单
+------------------------------------------------------------
 rpm qa |grep java 查看rpm java相关安装包
+rpm -e --nodeps jdk-1.7-ie787897
+--------------------------------------------------------------
+yum list installed ----------列出yum  安装清单
 yum  remove xxxxxx
+
 systemctl start docker.service 加入服务 service docker start 
 service iptables start
 vim etc/sysconfig/iptables

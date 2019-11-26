@@ -1,6 +1,25 @@
 ------------------------------------------------------------
 rpm qa |grep java 查看rpm java相关安装包
-rpm -e --nodeps jdk-1.7-ie787897
+rpm -e --nodeps jdk-1.7-ie787897  卸载rpm
+rpm -ivh  xxxx.rpm  安装rpm
+配置jdk环境变量
+① vi /etc/profile
+② 在末尾行添加
+	#set java environment
+	JAVA_HOME=/usr/local/jdk/jdk1.7.0_71
+	CLASSPATH=.:$JAVA_HOME/lib.tools.jar
+	PATH=$JAVA_HOME/bin:$PATH
+	export JAVA_HOME CLASSPATH PATH
+
+
+mysql 
+1、rpm 安装服务rpm 客户端rpm  
+2、serive mysql start
+3、设置root 用户
+4、授权grant all privileges on *.* to 'root' @'%' identified by 'root';
+flush privileges;
+5、开启3306端口
+
 --------------------------------------------------------------
 yum list installed ----------列出yum  安装清单
 yum  remove xxxxxx

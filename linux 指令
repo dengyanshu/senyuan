@@ -44,10 +44,18 @@ docker  run  -d  --name mytomcat -v /usr/local/webapps/  /usr/local/tomcat/webap
 docker  logs -tail=1000 container_id
 docker exec -it container_id /bin/bash
 
+docker commit  contaier_id  imagename:tag  //可以报现在在运行的容器保存成镜像
+docker  save -o imagename.tar  image_id //保存原镜像
+docker  load  -i  /usr/local/imagename.tar //恢复镜像
+docker  pull registry  //拉取docker 私有仓库镜像   
+第1步：修改配置让docker 信任这个ip和端口的私服 
+第2步：docker tag  imageid 192.168.1.1:5000/imagename 把需要上传的镜像 打成私服标签
+第3步：docker push imagesid 192.168.1.1:5000/imagename
+
 dockerfile:
 from 10.5.50.132:10000/java
 workdir /GneecCommonGisJa/
-copy GneecCommonGisJa.jar  /GneecCommonGisJa/GneecCommonGisJa.jar
+copy GneecCommonGisJa.jar  /GneecCommonGisJa/GneecCommonGisJa.jar    //add 会自动解压
 cmd ["java" "-Xmx1g","-Djava.security.egd=file:/dev/./jread'on","-jar","GneecCommonGisJa.jar",
 "--spring.config.location=file:/configs/application.yml"]
 

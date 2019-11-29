@@ -38,6 +38,8 @@ docker ps -a
 docker build -t  images:1.0.1 .
 挂载外部配置文件
 docker run -d --name gisjava -v /opt/market/configs/gisjava/ :/configs/ -p 8003:8003 gisjava:1.0.1
+docker  run  -d  --name mytomcat -v /usr/local/webapps/  /usr/local/tomcat/webapps  -p  9080:9080  tomcat:7
+(直接把war包拷贝到外部的时候就可以使用)
 
 docker  logs -tail=1000 container_id
 docker exec -it container_id /bin/bash

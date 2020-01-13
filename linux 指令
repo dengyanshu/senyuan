@@ -83,6 +83,8 @@ git config --system --unset credential.helper
 
 
 -----------------------------------------------------------
+git  clone  远端
+git init 初始化一个git项目
 git branch -a  查看所有
 git fetch  重新获取 （当远程分支不全的时候）
 
